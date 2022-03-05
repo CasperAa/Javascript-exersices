@@ -1,0 +1,46 @@
+  
+  const names = ["Jan", "Ole", "Kenneth", "Jens", "Henrik", "Bo"]
+
+  //1) New Array with only names longer than 3 char's
+  const newArray = names.filter(name => name.length <= 3);
+  console.log("New list")
+  newArray.forEach(console.log);
+  console.log("Old List")
+  names.forEach(console.log);  
+
+  //2) Names to uppercase
+  const namesInUpperCase = names.map(name => name.toUpperCase);
+  namesInUpperCase.forEach(console.log);
+
+  //3) Create a String for HTML
+  const namesForHTML = names.map(name => `<li> ${name} </li>`)
+  namesForHTML.unshift("<ul>")
+  namesForHTML.push("<\\ul>")
+  namesForHTML.join("\n")
+
+  //4) 
+  const cars = [
+  { id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000 },
+  { id: 2, year: 1999, make: 'Chevy', model: 'Venture', price: 4900 },
+  { id: 3, year: 2000, make: 'Chevy', model: 'Venture', price: 5000 },
+  { id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799 },
+  { id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799 }
+  ];
+
+  //Cars after 1999
+  const newerCars = cars.filter(function (car){
+      return car.year > 1999
+  });
+  console.log(newerCars)
+
+  //Volvo's
+  const volvoCars = cars.filter(function(car){
+      return car.make == 'Volvo'
+  });
+  console.log(volvoCars)
+
+  //Cars under 5000
+  const cheapCars = cars.filter(function(car){
+      return car.price < 5000
+  });
+  console.log(cheapCars)

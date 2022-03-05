@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+    </style>
+</head>
+<body>
+<div style="display: grid; margin: auto">
+<table cellpadding="2", cellspacing="2", width="40%" >
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Year</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody id="tableData"></tbody>
+</table>
+        <form style="margin: auto;">
+            <input style="margin: 10px" id="Input-field-price" placeholder="Enter price" type="number">
+            <button style="margin: 10px" id="btn-price">Apply filter</button>
+        </form>
+        <form style="margin: auto;">
+            <select style="margin: 10px" id="Input-field-make">
+
+            </select>
+            <button style="margin: 10px" id="btn-make">Apply filter</button>
+        </form>
+
+</div>
+<button id="reset-btn" style="display: flex; margin: auto" >Click here to reset data</button>
+
+<script>
+    const cars = [
+        { id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000 },
+        { id: 2, year: 1999, make: 'Chevy', model: 'Venture', price: 4900 },
+        { id: 3, year: 2000, make: 'Chevy', model: 'Venture', price: 5000 },
+        { id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799 },
+        { id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799 }
+    ];
+
+    function makeOptions () {
+        //To do - Shows Chevy twice in select menu
+        let k = "<option> Select a make </option>"
+        for (i = 0; i < cars.length; i++) {
+            k += '<option>' + cars[i].make + '</option>'
+        }
+        document.getElementById('Input-field-make').innerHTML =k;
+    }
+    makeOptions()
+
+    drawList(cars)
+    function drawList (list) {
+        let k = '<tbody>'
+        for (i = 0; i < list.length; i++) {
+            k += '<tr>';
+            k += '<td>' + list[i].id + '</td>';
+            k += '<td>' + list[i].year + '</td>';
+            k += '<td>' + list[i].make + '</td>';
+            k += '<td>' + list[i].model + '</td>';
+            k += '<td>' + list[i].price + '</td>';
+            k += '</tr>';
+        }
+        k += '</tbody>';
+        document.getElementById('tableData').innerHTML = k;
+    }
+    //Filter list by price
+    document.getElementById("btn-price").onclick = (evt) =>{
+        evt.preventDefault()
+        const priceToFilter = document.getElementById("Input-field-price").value
+        const newArray = cars.filter(function (car){
+            return car.price < priceToFilter
+        })
+        drawList(newArray)
+    }
+
+    //Filter by Make
+    document.getElementById("btn-make").onclick = (evt) =>{
+        evt.preventDefault()
+        const filterAfterMake = document.getElementById("Input-field-make").value
+        const newArray = cars.filter(function (car){
+            return car.make === filterAfterMake
+        })
+        drawList(newArray)
+    }
+
+    //Reset Data
+    document.getElementById("reset-btn").onclick = ()=>{
+        drawList(cars)
+        //missing clear input field function
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+//1)
+//Observe: no return type, no type on parameters
+function add(n1, n2){
+    return n1 +n2;
+ }
+
+ 
+ const sub = function(n1,n2){
+    return n1 - n2
+  } 
+
+  const cb = function(n1,n2, callback){
+    return "Result from the two numbers: "+n1+"+"+n2+"="+callback(n1,n2);
+  };
+  
+//2)
+//Call the functions above as sketched below. It’s not about doing it as fast as you can,
+//but about understanding what's happening, so make sure you understand each line.
+//console.log( add(1,2) )     // What will this print? 
+// = 3
+//console.log( add )          // What will it print and what does add represent? 
+// = function add(n1, n2){ return n1 + n2; }
+//console.log( add(1,2,3) ) ; // What will it print
+// = 3
+//console.log( add(1) );	    // What will it print 
+// = NaN
+//console.log( cb(3,3,add) ); // What will it print
+// = Result from the two numbers: 3 + 3 = 6;
+//console.log( cb(4,3,sub) ); // What will it print
+// = Result from the two numbers: 4 + 3 = 1;
+//console.log(cb(3,3,add())); // What will it print (and what was the problem)
+// = callback is not function
+//console.log(cb(3,"hh",add));// What will it print
+// = Result from the two numbers: 3 + hh = 3hh;
+
+// 3)  Error Handling
+
+typeof n1 === "number" //Will fail if n1 is undefined, or is not a number
+typeof callback === "function" //Will fail if callback is undefined or is not a function
+
+const cb2 = function(n1,n2, callback){
+    try{
+    return "Result from the two numbers: "+n1+"+"+n2+"="+callback(n1,n2);
+    } catch (e){
+        console.error("Make sure you are using numbers and correct anotation for the callback function")
+    }
+  };
+
+  console.log(cb2(3,2,add));
+
+  const div = function(n1,n2){
+    return n1 / n2
+  } 
+
+  const mul = function(n1,n2){
+    return n1 * n2
+  } 
+  console.log(cb2(15,5,div));
+  console.log(cb2(2,5,mul));

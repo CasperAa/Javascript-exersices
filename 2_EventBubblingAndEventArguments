@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <style>
+            .mydiv {width: 100px; height: 100px;background-color:yellow; margin:2px; border: 2px black;}
+        </style>
+
+    </head>
+<body>
+
+    <p id="text"></p>
+
+<div id="outer">
+<div id="d1" class="mydiv"></div>
+<div id="d2" class="mydiv"></div>
+<div id="d3" class="mydiv"></div>
+<div id="d4" class="mydiv"></div>
+<div id="d5" class="mydiv"></div>
+<div id="d6" class="mydiv"></div>
+<div id="d7" class="mydiv"></div>
+<div id="d8" class="mydiv"></div>
+<div id="d9" class="mydiv"></div>
+<div id="d10" class="mydiv"></div>
+</div>
+
+<script>
+
+    document.getElementById("outer").onclick = (e) => {
+        if(e.target.id === "outer"){
+            return
+        }
+        console.log(e.target.id)
+    }
+
+    document.getElementById("outer").onclick = (e) => {
+        if(e.target.id === "outer"){
+            return
+        }
+        const pNode = document.getElementById("text")
+        pNode.innerText = "You Clicked on " + e.target.id
+    }
+
+    
+
+    /*
+    document.getElementById("d1").onclick = (e)=> alert("Hi from " + e.target.id)
+    document.getElementById("d2").onclick = (e)=> alert("Hi from " + e.target.id)
+    document.getElementById("d3").onclick = (e)=> alert("Hi from " + e.target.id)
+    document.getElementById("d4").onclick = (e)=> alert("Hi from " + e.target.id)
+    document.getElementById("d5").onclick = (e)=> alert("Hi from " + e.target.id)
+    document.getElementById("d6").onclick = (e)=> alert("Hi from " + e.target.id)
+    document.getElementById("d7").onclick = (e)=> alert("Hi from " + e.target.id)
+    document.getElementById("d8").onclick = (e)=> alert("Hi from " + e.target.id)
+    document.getElementById("d9").onclick = (e)=> alert("Hi from " + e.target.id)
+    document.getElementById("d10").onclick = (e)=> alert("Hi from " + e.target.id)
+    */
+</script>
+</body>
+</html>

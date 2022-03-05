@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            width: 25px;
+            height: 25px;
+            border: 1px aquamarine solid;
+            margin: 2px;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <button id="btn">Change Colors </button>
+
+<div id="d1"></div>
+<div id="d1"></div>  
+<div id="d1"></div>
+
+<script>
+    function setColor(d){
+        d.style.backgroundColor = "blue"
+    }
+
+    const divs = document.querySelectorAll("div")
+    divs.forEach(setColor)
+    // divs.forEach(div => div.style.backgroundColor = "blue")
+
+
+   function changeColor(){
+       const divs = document.querySelectorAll("div")
+       divs[0].style.backgroundColor="red" 
+       divs[1].style.backgroundColor="green" 
+       divs[2].style.backgroundColor="orange"
+   }
+   
+   const btn = document.getElementById("btn")
+   btn.onclick = changeColor
+
+</script>
+
+</body>
+</html>
